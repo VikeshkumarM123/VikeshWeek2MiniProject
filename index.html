@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+body{
+background-color: pink; font-size: large;
+font-style: oblique;
+}
+form{
+padding-left: 25%; padding-top: 50px;
+}
+h1{
+padding-left: 25%;
+}
+</style>
+</head>
+<body>
+<form action="#" method="post">
+<h1 >Library Management</h1><br>
+<p><label for="title">Enter the book Title:</label>
+<input type="text" name="title" id="title" placeholder="Title here" >
+</p>
+<p><label for="author">Enter the Author name:</label>
+<input type="text" name="author" id="author" placeholder="Author name here">
+</p>
+<p><label for="year">Enter the Year published:</label>
+<input type="date" name="year" id="year" value="">
+</p>
+<p>
+Enter the status:
+<input type="radio" name="pos" value="false">Completed
+<input type="radio" name="pos" value="true">Incomplete
+</p>
+<button type="button" id="btn" onclick="printresult()">Submit</button>
+<button type="button" onclick="addBook()">Simply add</button>
+<button type="button" onclick="addBookToFront()">Add at first</button>
+<button type="button" onclick="removeLastBook()">Remove last</button>
+<button type="button" onclick="removeFirstBook()">Remove first</button>
+</form>
+</body>
+<script type="text/javascript">function printresult(){
+    let readStatuses=document.getElementsByName('pos'); let num=readStatuses.length;
+    
+    let temp=true;
+    for(i=0;i<num;i++)
+    {
+    if(readStatuses[i].type="radio")
+    {
+    if(readStatuses[i].checked){ temp=readStatuses[i].value;
+    }
+    
+    
+    let book={
+    title:document.getElementById('title').value, 
+    author:document.getElementById('author').value, 
+    yearPublished:document.getElementById('year').value, 
+    readStatus:temp, getSummary(){
+    console.log("Title: "+this.title); 
+    console.log("Author: "+this.author); 
+    console.log("Year Published : "+this.yearPublished);
+    console.log("Read Status: "+this.readStatus);
+    
+    },
+    toggleReadStatus(){
+    this.readStatus=!this.readStatus;
+    }
+    }
+    book.getSummary();
+    return book;
+    }
+}
+}
+    let bkcl=new Array();
+    function addBook(){
+    let kook=printresult(); bkcl.push(kook); console.log(bkcl);
+    }
+    function removeLastBook(){ let look=printresult(); bkcl.pop(); console.log(bkcl);
+    }
+    function addBookToFront(){ let yook=printresult(); bkcl.unshift(yook); console.log(bkcl);
+    }
+    function removeFirstBook(){ let uook=printresult(); bkcl.shift(); console.log(bkcl);
+    }</script>
+</html>
